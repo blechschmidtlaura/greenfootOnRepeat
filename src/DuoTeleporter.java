@@ -45,7 +45,6 @@ public class DuoTeleporter extends Actor implements Teleporter {
                 DuoTeleporter chosenTeleporter = objects.get(number);
                 player.setLocation(chosenTeleporter.getX(), chosenTeleporter.getY());
                 player.move(); //damit keine Endlosschleife entsteht
-                System.out.println("2");
                 return;
             }
             /*for (int i = 0; i < objects.size(); i++) {
@@ -63,7 +62,6 @@ public class DuoTeleporter extends Actor implements Teleporter {
         PlayerRabbit player = (PlayerRabbit) this.getOneIntersectingObject(PlayerRabbit.class);
         if (player != null) {
             player.setLocation(partner.getX(), partner.getY());
-            System.out.println("1");
         }
     }
 
