@@ -1,4 +1,5 @@
 import greenfoot.Actor;
+import greenfoot.Greenfoot;
 
 import java.util.List;
 
@@ -20,29 +21,52 @@ public class DuoTeleporter extends Actor implements Teleporter {
 
     private DuoTeleporter partner;
 
-    public DuoTeleporter(DuoTeleporter partner){
-        setPartner(partner);
-    }
-
     @Override
     public void act() {
-        teleport();
+        decideTeleportation();
+    }
+
+    public void decideTeleportation(){
+        if(partner != null){
+            teleportWithPartner();
+        } else{
+            teleport();
+        }
     }
 
     @Override
     public void teleport(){
         List<DuoTeleporter> objects = getWorld().getObjects(DuoTeleporter.class);
         PlayerRabbit player = (PlayerRabbit) this.getOneIntersectingObject(PlayerRabbit.class);
-        if(player != null) {
-            for (int i = 0; i < objects.size(); i++) {
+        while(player != null) {
+
+            int number = Greenfoot.getRandomNumber(objects.size());
+            if(objects.get(number) != this){
+                DuoTeleporter chosenTeleporter = objects.get(number);
+                player.setLocation(chosenTeleporter.getX(), chosenTeleporter.getY());
+                player.move(); //damit keine Endlosschleife entsteht
+                System.out.println("2");
+                return;
+            }
+            /*for (int i = 0; i < objects.size(); i++) {
                 if (objects.get(i) != this) {
                     player.setLocation(objects.get(i).getX(), objects.get(i).getY());
-                    //player.move();
+                    player.move(); //damit keine Endlosschleife entsteht
+                    System.out.println("2");
                     return;
                 }
-            }
+            }*/
         }
     }
+
+    public void teleportWithPartner(){
+        PlayerRabbit player = (PlayerRabbit) this.getOneIntersectingObject(PlayerRabbit.class);
+        if (player != null) {
+            player.setLocation(partner.getX(), partner.getY());
+            System.out.println("1");
+        }
+    }
+
     /*public void teleport() {
         List<Teleporter> objects = getWorld().getObjects(Teleporter.class);
         int count = 0;

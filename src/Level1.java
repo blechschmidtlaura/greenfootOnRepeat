@@ -35,8 +35,18 @@ public class Level1 extends RabbitWorld
         this.addObject(new Monster(),0,0);
         this.addObject(new Monster(), 3,2);
 
-        this.addObject(new DuoTeleporter(), 1,1);
-        this.addObject(new DuoTeleporter(), 5,1);
+        //this.addObject(new DuoTeleporter(), 1,1);
+        //this.addObject(new DuoTeleporter(), 5,1);
+        DuoTeleporter teleporter1 = new DuoTeleporter();
+        DuoTeleporter teleporter2 = new DuoTeleporter();
+        DuoTeleporter teleporter3 = new DuoTeleporter();
+        teleporter1.setPartner(teleporter2);
+        teleporter2.setPartner(teleporter3);
+        //teleporter3.setPartner(teleporter1);
+        addObject(teleporter1, 0,2);
+        addObject(teleporter2, 0,4);
+        addObject(teleporter3,0,6);
+
         //PlayerRabbit player2 = new PlayerRabbit();
         //player2.setImage("rock.gif");
         //this.addObject(player2, 5,1);
