@@ -15,7 +15,7 @@ public class PlayerRabbit extends MovingActor {
 
     private boolean isInWorld = true;
 
-
+///jjjjjjjjjj
     private int life; //Attribut
     //private int carrot_stack; //Attribut
     //private List<Carrot> carrots = new LinkedList<>(); //version mit Liste
@@ -39,7 +39,7 @@ public class PlayerRabbit extends MovingActor {
     /**
      * Wird einmal pro Zeiteinheit aufgerufen
      */
-    public void act() {
+    publitc void act() {
         if(life <= 0){
             this.alive = false;
         }
