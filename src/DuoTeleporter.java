@@ -10,6 +10,20 @@ public class DuoTeleporter extends Actor implements Teleporter {
         return isOn;
     }
 
+    public DuoTeleporter getPartner() {
+        return partner;
+    }
+
+    public void setPartner(DuoTeleporter partner) {
+        this.partner = partner;
+    }
+
+    private DuoTeleporter partner;
+
+    public DuoTeleporter(DuoTeleporter partner){
+        setPartner(partner);
+    }
+
     @Override
     public void act() {
         teleport();

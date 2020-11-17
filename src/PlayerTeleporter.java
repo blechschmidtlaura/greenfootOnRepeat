@@ -2,6 +2,7 @@ import greenfoot.Actor;
 import greenfoot.Greenfoot;
 
 public class PlayerTeleporter extends Actor implements Teleporter{
+
     public void act(){
         teleport();
     }
