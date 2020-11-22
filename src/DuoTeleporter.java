@@ -21,17 +21,25 @@ public class DuoTeleporter extends Actor implements Teleporter {
 
     private DuoTeleporter partner;
 
+    private Timer timer = new Timer(0);
+
+    //private int teleportingTime = 0;
+
     @Override
     public void act() {
         decideTeleportation();
     }
 
     public void decideTeleportation(){
-        if(partner != null){
-            teleportWithPartner();
-        } else{
-            teleport();
-        }
+        if(timer.isTicking()){
+            timer.ticking();
+        } else if (partner != null) {
+                teleportWithPartner();
+                timer = new Timer(timer.getTimeValue());
+            } else {
+                teleport();
+                timer = new Timer(timer.getTimeValue());
+            }
     }
 
     @Override
@@ -62,6 +70,7 @@ public class DuoTeleporter extends Actor implements Teleporter {
         PlayerRabbit player = (PlayerRabbit) this.getOneIntersectingObject(PlayerRabbit.class);
         if (player != null) {
             player.setLocation(partner.getX(), partner.getY());
+            //Greenfoot.delay(3); --Alternative zum Timer
         }
     }
 

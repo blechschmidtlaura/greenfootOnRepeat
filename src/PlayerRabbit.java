@@ -94,7 +94,8 @@ public class PlayerRabbit extends MovingActor {
                 getWorld().addObject(carrots.get(0), getX(), getY());
                 carrots.remove(0);
             }*/ //Liste
-            if(carrots.length > 0 && carrots[0] != null){ //durch Festlegung auf Größe 10 des Array kann es dazu kommen, dass zwar Carrots drin sind, aber auch null-Referenzen, anders möglich?
+            if(carrots.length > 0 && carrots[0] != null){ //durch Festlegung auf Größe 10 des Array kann es dazu kommen,
+                // dass zwar Carrots drin sind, aber auch null-Referenzen, anders möglich?
 
                 getWorld().addObject(carrots[0], getX(), getY());
                 Carrot[] newArray = new Carrot[carrots.length-1];
@@ -189,7 +190,8 @@ public class PlayerRabbit extends MovingActor {
         return alive;
     }
 }
-//getter/setter: Zugriff auf die Attribute von anderen Klassen, Zugriffskontrolle, da Attribut private ist; logische Abfragen innerhalb der Methode (z.B.life nicht unter null setzen)
+//getter/setter: Zugriff auf die Attribute von anderen Klassen, Zugriffskontrolle, da Attribut private ist;
+// logische Abfragen innerhalb der Methode (z.B.life nicht unter null setzen)
 
 //Array:schneller Zugriff O(1), schlecht ein weiteres Element hinzufügen wegen fester Länge(neues erstellen und kopieren) O(n)
 //Liste: langsamer Lesezugriff O(n), leicht ein weiteres Element hinzufügbar, Referenz O(1)

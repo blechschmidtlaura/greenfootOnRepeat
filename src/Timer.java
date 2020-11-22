@@ -4,30 +4,37 @@ import greenfoot.util.GreenfootUtil;
 
 public class Timer extends Actor {
 
-    long startTime;
-    long endTime;
+    private int tickingTime;
 
-    public Timer(long endTime){
-        startTime = System.currentTimeMillis();
-        this.endTime = endTime;
+    public int getTimeValue() {
+        return timeValue;
     }
 
-    public void act(){
-        ticking();
+    private final int timeValue = 3;
+
+    public Timer(int time){
+        this.tickingTime = time;
     }
 
     public void ticking(){
-        if(this.checkTime(endTime)){
-            //todo
+        if(tickingTime>0){
+            tickingTime--;
         }
     }
 
-    public boolean checkTime(long endTime){
-        long newTime = System.currentTimeMillis();
-        if(endTime == newTime){
+    public boolean isTicking(){
+        if(getTickingTime() > 0){
             return true;
         } else{
             return false;
         }
+    }
+
+    public int getTickingTime(){
+        return tickingTime;
+    }
+
+    public void setTickingTime(int tickingTime){
+        this.tickingTime = tickingTime;
     }
 }
